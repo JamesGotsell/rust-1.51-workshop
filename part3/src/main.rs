@@ -23,6 +23,22 @@ impl City {
             }
             // 👉 TODO Handle the other CitySize variants individually,
             //    in a similar way to how *town* is handled here
+            CitySize::City => {
+                let residents =10_000;
+
+                (
+                    format!("a *City* of approximately {} residents", residents),
+                    residents,
+                )
+            }
+            CitySize::Metropolis => {
+                let residents =100_000_000;;
+
+                (
+                    format!("a *Metropolis* of approximately {} residents", residents),
+                    residents,
+                )
+            }
             _ => {
                 let residents = 1_000;
 
@@ -46,10 +62,7 @@ impl City {
 
 fn main() {
     // 👉 TODO Use City::new() to create a Metropolis-sized city here
-    let rustville = City {
-        description: String::new(),
-        residents: 0,
-    };
+    let rustville = City::new(CitySize::Metropolis , true);
 
     println!("This city is {}", rustville.description);
 
